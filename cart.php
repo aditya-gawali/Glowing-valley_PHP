@@ -73,6 +73,8 @@ if (isset($_GET['d_id'])) {
 
     <?php
     include './components/navbar.html';
+    include './components/search.php';
+
     ?>
 
 
@@ -133,14 +135,14 @@ if (isset($_GET['d_id'])) {
     </p>
 </div>
 <div class="flex justify-end space-x-4">
-    <a href="index.php">
+    <a href="shopAll.php">
         <button type="button" class="rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
             Back to shop
         </button>
     </a>
-    <button type="button" class="rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
+    <!-- <button type="button" class="rounded-md border border-black px-3 py-2 text-sm font-semibold text-black shadow-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
         Checkout
-    </button>
+    </button> -->
 </div>
 </div>
 

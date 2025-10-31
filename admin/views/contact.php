@@ -12,7 +12,7 @@
                 <!-- Breadcrumb Start -->
                 <div class="mb-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                     <h2 class="text-title-md2 font-bold text-black dark:text-white">
-                        Products
+                        Contact Request
                     </h2>
 
                     <nav>
@@ -20,7 +20,7 @@
                             <li>
                                 <a class="font-medium" href="index.php">Dashboard /</a>
                             </li>
-                            <li class="font-medium text-primary">Products</li>
+                            <li class="font-medium text-primary">Contact Request</li>
                         </ol>
                     </nav>
                 </div>
@@ -43,101 +43,60 @@
                                     <thead>
                                         <tr class="bg-gray-2 text-left dark:bg-meta-4">
                                             <th class="min-w-[120px] px-4 py-4 font-medium text-black dark:text-white">
-                                                Product Image
+                                                Srno
                                             </th>
                                             <th class="min-w-[150px] px-4 py-4 font-medium text-black dark:text-white">
-                                                Product Name
+                                                First Name
                                             </th>
                                             <th class="min-w-[150px] px-4 py-4 font-medium text-black dark:text-white">
-                                                Category
+                                                Last Name
                                             </th>
                                             <th class="px-4 py-4 font-medium text-black dark:text-white">
-                                                Weight
+                                                Email
                                             </th>
                                             <th class="px-4 py-4 font-medium text-black dark:text-white">
-                                                Prices
+                                                Mobile
                                             </th>
-                                            <th class="min-w-[120px] px-4 py-4 font-medium text-black dark:text-white">
-                                                Status
-                                            </th>
+                                            
                                             <th class="px-4 py-4 font-medium text-black dark:text-white">
-                                                Actions
+                                                Action
                                             </th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $product = $conn->query("SELECT * FROM products ORDER BY `id` DESC");
+                                        $query = $conn->query("SELECT * FROM contact");
 
-                                        $product->execute();
+                                        $query->execute();
 
-                                        $data = $product->fetchAll(PDO::FETCH_OBJ);
+                                        $data = $query->fetchAll(PDO::FETCH_OBJ);
                                         $id = 0;
+
                                         foreach ($data as $row) :
                                             $id++;
                                         ?>
                                             <tr>
 
                                                 <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
-                                                    <div class="h-10.5 w-15 rounded-md">
-                                                        <img src=" <?php echo './' . $row->image; ?>" alt="Product" />
-                                                    </div>
+                                                    <p class="text-black dark:text-white"><?php echo $id; ?></p>
                                                 </td>
                                                 <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
-                                                    <p class="text-black dark:text-white"><?php echo $row->name; ?></p>
+                                                    <p class="text-black dark:text-white"><?php echo $row->fn; ?></p>
                                                 </td>
                                                 <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
-                                                    <p class="text-black dark:text-white"><?php echo ($row->category == 1  ? "Beauty" : "Hamper") ?></p>
+                                                    <p class="text-black dark:text-white"><?php echo $row->ln; ?></p>
                                                 </td>
                                                 <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
-                                                    <p class="text-black dark:text-white"><?php echo $row->weight; ?></p>
+                                                    <p class="text-black dark:text-white"><?php echo $row->email; ?></p>
                                                 </td>
                                                 <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
-                                                    <p class="text-black dark:text-white"><?php echo $row->prices; ?></p>
+                                                    <p class="text-black dark:text-white"><?php echo $row->mob; ?></p>
                                                 </td>
-                                                <!-- <form action="./db/insert.php" method="POST"> -->
-                                                <?php
-                                                if ($row->popular == 1) : ?> <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
-                                                        <a href="./db/insert.php?id=<?php echo $row->id; ?>&type=p">
-                                                            <button class="inline-flex rounded-full bg-success bg-opacity-10 px-3 py-1 text-sm font-medium text-success" name="popular" type="submit">
-                                                                Popular
-                                                            </button>
-                                                        </a>
-                                                    </td>
-                                                <?php else : ?> <td class="px-4 py-5">
-                                                        <a href="./db/insert.php?id=<?php echo $row->id; ?>&type=u">
-                                                            <button class="inline-flex rounded-full bg-warning bg-opacity-10 px-3 py-1 text-sm font-medium text-warning" name="unpopular" type="submit">
-                                                                unpopular
-                                                            </button>
-                                                        </a>
-                                                    </td>
-                                                <?php endif;
-                                                ?>
-                                                <!-- </form> -->
-
 
                                                 <td class="border-b border-[#eee] px-4 py-5 dark:border-strokedark">
                                                     <div class="flex items-center space-x-3.5">
 
-                                                        <a href="./newProduct.php?id=<?php echo $row->id; ?>">
-                                                            <button class="hover:text-primary">
 
-                                                                <svg class="fill-current" fill="none" height="18" width="18" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 348.882 348.882" xml:space="preserve" stroke="#9b9ea1">
-
-                                                                    <g id="SVGRepo_bgCarrier" stroke-width="0" />
-
-                                                                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" />
-
-                                                                    <g id="SVGRepo_iconCarrier">
-                                                                        <g>
-                                                                            <path d="M333.988,11.758l-0.42-0.383C325.538,4.04,315.129,0,304.258,0c-12.187,0-23.888,5.159-32.104,14.153L116.803,184.231 c-1.416,1.55-2.49,3.379-3.154,5.37l-18.267,54.762c-2.112,6.331-1.052,13.333,2.835,18.729c3.918,5.438,10.23,8.685,16.886,8.685 c0,0,0.001,0,0.001,0c2.879,0,5.693-0.592,8.362-1.76l52.89-23.138c1.923-0.841,3.648-2.076,5.063-3.626L336.771,73.176 C352.937,55.479,351.69,27.929,333.988,11.758z M130.381,234.247l10.719-32.134l0.904-0.99l20.316,18.556l-0.904,0.99 L130.381,234.247z M314.621,52.943L182.553,197.53l-20.316-18.556L294.305,34.386c2.583-2.828,6.118-4.386,9.954-4.386 c3.365,0,6.588,1.252,9.082,3.53l0.419,0.383C319.244,38.922,319.63,47.459,314.621,52.943z" />
-                                                                            <path d="M303.85,138.388c-8.284,0-15,6.716-15,15v127.347c0,21.034-17.113,38.147-38.147,38.147H68.904 c-21.035,0-38.147-17.113-38.147-38.147V100.413c0-21.034,17.113-38.147,38.147-38.147h131.587c8.284,0,15-6.716,15-15 s-6.716-15-15-15H68.904c-37.577,0-68.147,30.571-68.147,68.147v180.321c0,37.576,30.571,68.147,68.147,68.147h181.798 c37.576,0,68.147-30.571,68.147-68.147V153.388C318.85,145.104,312.134,138.388,303.85,138.388z" />
-                                                                        </g>
-                                                                    </g>
-
-                                                                </svg>
-                                                            </button>
-                                                        </a>
                                                         <a onclick="deleteConfirm(<?php echo $row->id; ?>)">
                                                             <button class="hover:text-danger">
                                                                 <svg class="fill-current" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -154,7 +113,7 @@
                                                 <script>
                                                     const deleteConfirm = (id) => {
                                                         if (confirm("Are you sure you want to delete this item?")) {
-                                                            window.location.href = `./db/delete.php?id=${id}`;
+                                                            window.location.href = `./db/cdelete.php?id=${id}`;
                                                         }
                                                     }
                                                 </script>
@@ -165,6 +124,7 @@
                                         <?php
                                         endforeach;
                                         ?>
+                                        <!-- <tr>No data found</tr> -->
                                     </tbody>
                                 </table>
                             </div>

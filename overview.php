@@ -54,6 +54,8 @@ $currentUrl = $protocol . $host . $requestUri;
 
     <?php
     include './components/navbar.html';
+    include './components/search.php';
+
     ?>
 
 
@@ -103,10 +105,10 @@ $currentUrl = $protocol . $host . $requestUri;
                     <p><?php echo $data->uses ?></p>
                     </p>
                     <h2 class="text-lg font-bold tracking-tighter pt-4 ">
-                        Ingredients
+                        <?php echo ($data->ingre != "") ? "Ingredients" : "" ?>
                     </h2>
                     <p class="leading-relaxed ">
-                    <p class="pt-3"><?php echo $data->uses ?></p>
+                    <p class="pt-3"><?php echo $data->ingre ?></p>
                     </p>
 
                     <div class="my-4 border-b border-gray-300 pb-2">
@@ -128,7 +130,7 @@ $currentUrl = $protocol . $host . $requestUri;
 
                                 if ($weights[$i] != ""):
                             ?>
-                                    <a href="overview.php?w=<?php echo $weights[$i]; ?>&p=<?php echo $prices[$i]; ?>">
+                                    <a href="overview.php?id=<?php echo $id;?>&w=<?php echo $weights[$i]; ?>&p=<?php echo $prices[$i]; ?>">
                                         <li class="text-heading mb-2 mr-2 flex h-9 px-4 cursor-pointer items-center justify-center rounded border border-gray-300 p-1 text-xs font-semibold uppercase transition duration-200 ease-in-out hover:border-black md:mb-3 md:mr-3 md:h-11  md:text-sm">
                                             <?php echo $weights[$i] ?>
                                         </li>
@@ -145,7 +147,8 @@ $currentUrl = $protocol . $host . $requestUri;
                         if ($prices[0] != null): ?>
 
                             <span class="title-font text-2xl font-bold text-gray-900">
-                                <?php echo (isset($_GET['p'])) ?  "₹ " . $_GET['p'] : "₹ " . $prices[0]; ?>
+                                <?php echo (isset($_GET['p'])) ?  "₹ " . $_GET['p'] : "₹ " . $prices[0];;
+                                echo ($data->category == 2) ? " onwards" : "" ?>
                             </span>
                         <?php endif;
                         ?>
@@ -161,9 +164,11 @@ $currentUrl = $protocol . $host . $requestUri;
 
                             <input class="hidden" type="text" name="weight" value="<?php echo (isset($_GET['w'])) ?  " " . $_GET['w'] : " " . $weights[0]; ?>">
                             <input class="hidden" type="text" name="price" value="<?php echo (isset($_GET['p'])) ?  " " . $_GET['p'] : " " . $prices[0]; ?>">
-                            <button type="submit" name="cart" class="rounded-md bg-[#041e42] px-3 py-2 text-lg font-semibold text-white shadow-sm hover:bg-[#041e42]/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
-                                <i class="ri-shopping-cart-line"></i> Add to Cart
-                            </button>
+                            <?php if ($data->category == 1) : ?>
+                                <button type="submit" name="cart" class="rounded-md bg-[#041e42] px-3 py-2 text-lg font-semibold text-white shadow-sm hover:bg-[#041e42]/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
+                                    <i class="ri-shopping-cart-line"></i> Add to Cart
+                                </button>
+                            <?php endif; ?>
                             <a href="<?php echo $whatsappUrl ?>">
 
                                 <button type="button" name="buy" class="rounded-md bg-green-500 px-3 py-2 text-lg font-semibold text-white shadow-sm hover:bg-green-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-green-600">

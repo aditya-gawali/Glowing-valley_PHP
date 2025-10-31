@@ -22,7 +22,10 @@
 <body class="relative">
 
     <?php
+    
     include './components/navbar.html'; 
+    include './components/search.php';
+
     ?>
 
 
@@ -37,56 +40,26 @@
                     We&#x27;re just getting started
                 </p>
                 <p class="text-base text-gray-600 md:text-lg">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus ducimus dolorem sequi, ab aliquam
-                    ratione. Lorem, ipsum.
+                At Glowing Valley, we believe that beauty is a celebration of individuality, and we aim to enhance your natural glow with our carefully curated beauty products and luxurious hampers.
+                <!-- Whether you're treating yourself or searching for the perfect gift, our selection is crafted to provide self-care, relaxation, and elegance. -->
+
+                <!-- We source the finest beauty essentials, skincare items, and premium hampers to offer a unique experience that blends indulgence and care. From skincare sets to personalized beauty hampers, we ensure every product reflects quality, sophistication, and a touch of luxury. -->
+                    <br>    
+                Join us on a journey of beauty and gifting that’s as special as you are!
+                
                 </p>
-                <button type="button" class="rounded-md bg-[#041e42] px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-[#041e42]/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
-                    Contact us
-                </button>
+
+                <br>
+                <a href="contact.php" class="py-2 ">
+                    <button type="button" class="rounded-md bg-[#041e42]  px-3 py-2  text-sm font-semibold text-white shadow-sm hover:bg-[#041e42]/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
+                        Contact us
+                    </button>
+                </a>
             </div>
             <div class="md:mt-o mt-10 w-full">
                 <img src="https://images.unsplash.com/photo-1605165566807-508fb529cf3e?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&amp;auto=format&amp;fit=crop&amp;w=2340&amp;q=80" alt="Getting Started" class="rounded-lg" />
             </div>
         </div>
-
-        <!-- <div class="my-4">
-            <h1 class="text-3xl font-bold">Our Team</h1>
-            <p class="mt-2 text-gray-500">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam,
-                voluptatum.
-            </p>
-        </div>
-        <div class="grid grid-cols-1 gap-[30px] md:grid-cols-3">
-            <div class="flex flex-col items-center text-start">
-                <div class="relative flex h-[342px] w-full flex-col justify-end rounded-[10px] bg-red-300" style="background-position:center;background-size:cover;background-repeat:no-repeat">
-                    <img src="https://images.unsplash.com/photo-1540569014015-19a7be504e3a?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8NzZ8fHBlcnNvbnxlbnwwfHwwfHw%3D&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="" class="z-0 h-full w-full rounded-[10px] object-cover" />
-                    <div class="absolute bottom-4 left-4">
-                        <h1 class="text-xl font-semibold text-white">Lorem, ipsum.</h1>
-                        <h6 class="text-base text-white">Lorem, ipsum dolor.</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="flex flex-col items-center text-start">
-                <div class="relative flex h-[342px] w-full flex-col justify-end rounded-[10px] bg-red-300" style="background-position:center;background-size:cover;background-repeat:no-repeat">
-                    <img src="https://images.unsplash.com/photo-1513956589380-bad6acb9b9d4?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDV8fHxlbnwwfHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="" class="z-0 h-full w-full rounded-[10px] object-cover" />
-                    <div class="absolute bottom-4 left-4">
-                        <h1 class="text-xl font-semibold text-white">Lorem, ipsum.</h1>
-                        <h6 class="text-base text-white">Lorem, ipsum dolor.</h6>
-                    </div>
-                </div>
-            </div>
-            <div class="flex flex-col items-center text-start">
-                <div class="relative flex h-[342px] w-full flex-col justify-end rounded-[10px] bg-red-300" style="background-position:center;background-size:cover;background-repeat:no-repeat">
-                    <img src="https://images.unsplash.com/photo-1567532939604-b6b5b0db2604?ixlib=rb-4.0.3&amp;ixid=MnwxMjA3fDB8MHxzZWFyY2h8NDB8fHBlcnNvbnxlbnwwfHwwfHw%3D&amp;auto=format&amp;fit=crop&amp;w=800&amp;q=60" alt="" class="z-0 h-full w-full rounded-[10px] object-cover" />
-                    <div class="absolute bottom-4 left-4">
-                        <h1 class="text-xl font-semibold text-white">Lorem, ipsum.</h1>
-                        <h6 class="text-base text-white">Lorem, ipsum dolor.</h6>
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
-
 
         <?php
         include './components/founder.html';
@@ -103,15 +76,14 @@
                 Made with love, right here in India
             </p>
             <p class="max-w-4xl text-base text-gray-600 md:text-xl">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
-                veritatis voluptates neque itaque repudiandae sint, explicabo assumenda
-                quam ratione placeat?
+            We are located at the heart of Nashik City, making it easy for you to visit us or reach out for any queries. Check out the map below for directions to our location. Whether you want to drop by or explore our surroundings, this map will guide you right to us!
             </p>
         </div>
         <div class="w-full space-y-4">
-            <img class="h-[200px] w-full rounded-xl object-cover md:h-full" src="https://dev-ui-image-assets.s3.ap-south-1.amazonaws.com/google-map.jpg" alt="" />
+        <iframe  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3748.642742349706!2d73.72066437481934!3d20.023503481386008!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bddeb986ec4af57%3A0x4eacda5e354350af!2sGangapur%20Rd%2C%20Maharashtra!5e0!3m2!1sen!2sin!4v1728484800104!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            <!-- <img class="h-[200px] w-full rounded-xl object-cover md:h-full" src="https://dev-ui-image-assets.s3.ap-south-1.amazonaws.com/google-map.jpg" alt="" /> -->
         </div>
-        <div class="my-8 flex flex-col gap-y-6 md:flex-row px-5">
+        <!-- <div class="my-8 flex flex-col gap-y-6 md:flex-row px-5">
 
             <div class="flex flex-col space-y-3 md:w-2/4 lg:w-1/5">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-5 w-5">
@@ -125,7 +97,7 @@
                 </p>
             </div>
 
-        </div>
+        </div> -->
         <hr class="mt-20" />
 
 

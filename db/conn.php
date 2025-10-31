@@ -1,16 +1,10 @@
 <?php
 
 try {
-	// $host = "localhost";
-	// $dbname = "glow_valley";
-	// $user = "root";
-	// $password = "";
-
 	$host = "localhost";
-	$dbname = "u264552578_glow_valley";
-	$user = "u264552578_root1";
-	$password = "Glow_valley@123";
-
+	$dbname = "glow_valley";
+	$user = "root";
+	$password = "";
 
 	$conn = new PDO("mysql:host=$host;dbname=$dbname", $user, $password);
 	// $conn = mysqli_connect($host,$user,$password,$dbname);

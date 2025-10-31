@@ -3,6 +3,10 @@ var mobileNav = document.querySelector("#mobile-nav");
 var menu = document.querySelector("#menu");
 var cross = document.querySelector("#cross");
 
+var searchBtn = document.querySelector("#search-div");
+var search = document.querySelector("#search");
+var searchcross = document.querySelector("#searchcross");
+
 var t4 = gsap.timeline();
 
 t4.pause()
@@ -35,6 +39,13 @@ cross.addEventListener("click", async () => {
     mobileNav.style.display = await myPromise;
 })
 
+search.addEventListener("click", () => {
+    searchBtn.style.display = "flex";
+})
+
+searchcross.addEventListener("click", async () => {
+    searchBtn.style.display = "none";
+})
 
 const tabs = new Swiper('.tabs', {
     // Optional parameters

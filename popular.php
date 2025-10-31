@@ -29,6 +29,8 @@ error_reporting(0);
 
     <?php
     include './components/navbar.html';
+    include './components/search.php';
+
     ?>
 
 
@@ -62,7 +64,7 @@ error_reporting(0);
             </div>
         </div> -->
 
-        <div class="mx-auto grid w-full max-w-7xl items-center space-y-4 px-2 py-10 md:grid-cols-2 md:gap-4 md:space-y-0 lg:grid-cols-4">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mx-auto">
             <?php
             $product = $conn->query("SELECT * FROM products WHERE popular = 1 ORDER BY `id` DESC");
 
@@ -72,49 +74,39 @@ error_reporting(0);
 
             foreach ($data as $row) :
             ?>
-                <div class="rounded-md shadow-xl">
-                    <a href="./overview.php?id=<?php echo $row->id; ?>"><img src="./admin/<?php echo $row->image; ?>" alt="Laptop" class="aspect-[16/9] w-full rounded-md object-cover md:aspect-auto md:h-[200px] lg:h-[200px]" /></a>
-                    <div class="p-4">
-                        <h1 class="inline-flex items-center text-lg font-semibold">
-                            <?php echo $row->name; ?>
-                        </h1>
-                        <p class="mt-3 text-sm text-gray-600">
-                            <?php echo $row->uses; ?>
-                        </p>
+                <div class="bg-white shadow-md rounded-lg flex flex-col h-full">
+                    <div class="h-48 overflow-hidden rounded-t-lg">
+                        <a href="./overview.php?id=<?php echo $row->id; ?>">
+                            <img src="./admin/<?php echo $row->image; ?>" alt="Product" class="w-full h-full object-cover" />
+                        </a>
+                    </div>
 
+                    <div class="flex flex-col flex-grow p-4">
+                        <h2 class="text-lg font-semibold mb-2"><?php echo $row->name; ?></h2>
+                        <p class="text-gray-600 mb-4"><?php echo $row->uses; ?></p>
                         <div class="mt-5 flex items-center space-x-2">
                             <?php $weight = explode(",", $row->weight);
-
-
-
                             foreach ($weight as $w) :
-
-
                                 if ($w != "") :
                             ?>
-
-
-
                                     <span class="block cursor-pointer rounded-md border border-gray-300 p-1 px-2 text-sm font-medium">
                                         <?php echo $w; ?>
                                     </span>
-
                             <?php
                                 endif;
                             endforeach; ?>
-
                         </div>
-                        <div class="mt-5 flex items-center space-x-2">
-                            <span class="block text-xl font-semibold font-sans"><?php $price = explode(",", $row->prices);
-                                                                                echo ($price[0] != "") ? "₹ " . $price[0] : "" ?></span>
-                            </span>
+                        <div class="mt-auto">
+                            <p class="text-xl font-bold"><?php $price = explode(",", $row->prices);
+                                                            echo ($price[0] != "") ? "₹ " . $price[0] : "";
+                                                            echo ($row->category == 2) ? " onwards" : ""
+                                                            ?></p>
+                            <a href="./overview.php?id=<?php echo $row->id; ?>">
+                                <button class="mt-2 w-full bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600">
+                                    <i class="ri-whatsapp-line"></i> Buy Now
+                                </button>
+                            </a>
                         </div>
-                        <a href="./overview.php?id=<?php echo $row->id; ?>">
-                            <button type="button" class="mt-4 w-full rounded-md bg-[#041e42] px-2 py-1.5 text-md font-semibold text-white shadow-sm hover:bg-[#041e42]/90 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black">
-                                <i class="ri-shopping-cart-line"></i>
-                                Add to Cart
-                            </button>
-                        </a>
                     </div>
                 </div>
 

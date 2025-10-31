@@ -1,7 +1,9 @@
 <?php
 require 'conn.php';
 session_start();
+
 $_SESSION['addproduct'] = false;
+$_SESSION['contact'] = false;
 
 if (isset($_POST['addProduct'])) {
     $category = $_POST['category'];
@@ -9,9 +11,11 @@ if (isset($_POST['addProduct'])) {
     $uses = $_POST['uses'];
     $ingre = $_POST['ingre'];
 
-    $weight = $_POST['w1'] || null;
-    $prices = $_POST['p1'] || null;
+        $weight = (isset($_POST['w1'])) ? $_POST['w1'] : "" ;
+        $prices = (isset($_POST['p1'])) ? $_POST['p1'] : "" ;
 
+if($weight != null){
+    
     for ($i = 2; $i < 3; $i++) {
         if (isset($_POST['w' . $i . ''])) {
 
@@ -19,6 +23,9 @@ if (isset($_POST['addProduct'])) {
             $prices .= "," . $_POST['p' . $i . ''];
         }
     }
+}
+
+echo "Weight :" . var_dump($weight);
 
 
 
@@ -84,6 +91,7 @@ if (isset($_POST['addProduct'])) {
         $_SESSION['updateproduct'] = true;
     } else {
         $insert = $conn->prepare("insert into products(category,name,uses,ingre,weight,prices,image) values (:cate,:name,:uses,:ingre,:weight,:prices,:image)");
+        echo "Weight :" . var_dump($weight);
 
         $file = 'db/' . $target_file;
         $insert->execute(array(
@@ -111,4 +119,26 @@ if (isset($_GET['id']) && isset($_GET['type'])) {
     }
 
     header("location:../product.php");
+}
+
+
+if (isset($_POST['contact'])) {
+    $fn = $_POST['first_name'];
+    $ln = $_POST['last_name'];
+    $email = $_POST['email'];
+    $mob = $_POST['phone_number'];
+
+    $insert = $conn->prepare("insert into contact(id,fn,ln,email,mob) values (NULL,:fn,:ln,:email,:mob)");
+
+    $insert->execute(array(
+        ':fn' => $fn,
+        ':ln' => $ln,
+        ':email' => $email,
+        ':mob' => $mob
+    ));
+    $_SESSION['contact'] = true;
+
+    header("location:../../contact.php");
+    
+
 }
