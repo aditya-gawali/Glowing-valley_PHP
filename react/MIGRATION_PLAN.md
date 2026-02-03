@@ -46,10 +46,25 @@ This document lists a recommended per-file mapping and next steps to migrate the
   - Keep admin as is and migrate later, or
   - Migrate admin views into `react/` under `/admin` with protected routing and role-based access.
 
-## Tasks for me (if you'd like me to continue)
-- Convert remaining PHP templates into React components (I can do this per file or by priority).
-- Replace immediate PHP-driven pages with React pages and wire to your real API (send API docs or base URL).
-- Create a PR with the skeleton and run `npm install` + `npm run dev` to test locally and iterate.
+## Progress so far
+- Converted: `index.php` → `src/pages/Home.jsx` (hero, popular, categories)
+- Converted: `shopAll.php` → `src/pages/Shop.jsx`
+- Converted: `popular.php` → `src/pages/Popular.jsx`
+- Converted: `overview.php` → `src/pages/Product.jsx` (variant selection + add to cart)
+- Converted: `cart.php` → `src/pages/Cart.jsx` (cart UI backed by Zustand)
+- Converted: `about.php` → `src/pages/About.jsx`
+- Converted: `contact.php` → `src/pages/Contact.jsx` (form wired to `POST /contact`)
+- Converted shared components: `components/navbar.html` → `src/components/Navbar.jsx`, `components/footer.html` → `src/components/Footer.jsx`, `components/founder.html` → `src/components/Founder.jsx`, `components/search.php` → `src/components/Search.jsx`
+- Admin skeleton: `admin/views/*` → `src/admin/*` (Dashboard, Products list, NewProduct, Login, ProtectedRoute)
+- Stores: `src/stores/{productStore,cartStore,authStore}` implemented and wired.
+- API client: `src/services/api.js` configured to use a dummy API base URL (`https://api.example.com`)
+
+## Next steps / remaining files
+- Convert any remaining small PHP fragments or server-side helpers into client-side components (if any).
+- Add CSS tweaks and ensure asset paths are correct (copy images to `/public` if needed).
+- Replace dummy API endpoints with your real API once provided and adapt request/response shapes.
+- Implement admin auth and complete CRUD flows with real API.
+- Add unit/e2e tests and finalize cleanup (remove PHP files if you prefer).
 
 ---
-If you'd like, I can start converting specific pages now—tell me which pages to prioritize and provide API docs or base URL for endpoints.
+If you'd like, I can continue and complete any remaining pieces, wire up the real API, and open a PR with these changes.
